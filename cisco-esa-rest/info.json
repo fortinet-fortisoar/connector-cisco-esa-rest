@@ -1,0 +1,1130 @@
+{
+  "name": "cisco-esa-rest",
+  "label": "Cisco ESA(REST)",
+  "description": "The Cisco Email Security Virtual Appliance significantly lowers the cost of deploying email security, especially in highly distributed networks. Spam and malware are part of a complex email security picture that includes inbound threats and outbound risks. The all-in-one Cisco ESA (Email Security Appliance) offers simple, fast deployment with few maintenance requirements, low latency, and low operating costs. ",
+  "publisher": "Fortinet",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "version": "1.0.0",
+  "category": "Email Security",
+  "icon_large_name": "large.png",
+  "icon_small_name": "small.png",
+  "help_online": "https://github.com/fortinet-fortisoar/connector-cisco-esa-rest/blob/release/1.0.0/docs/CiscoESAConnectorDoc.md",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server Address",
+        "description": "IP address or FQDN of the Cisco ESA endpoint server to which you will connect and perform the automated operations.",
+        "tooltip": "IP address or FQDN of the Cisco ESA endpoint server to which you will connect and perform the automated operations.",
+        "name": "server_url",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text"
+      },
+      {
+        "title": "Username",
+        "description": "Username to access the Cisco ESA server to which you will connect and perform the automated operations.",
+        "tooltip": "Username to access the Cisco ESA server to which you will connect and perform the automated operations.",
+        "name": "username",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "type": "text"
+      },
+      {
+        "title": "Password",
+        "description": "Password to access the Cisco ESA server to which you will connect and perform the automated operations.",
+        "tooltip": "Password to access the Cisco ESA server to which you will connect and perform the automated operations.",
+        "name": "password",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "type": "password"
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True.",
+        "required": false,
+        "visible": true,
+        "editable": true,
+        "type": "checkbox",
+        "value": true
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "search_quarantine_messages",
+      "title": "Search Quarantine Messages",
+      "description": "Retrieves the detailed list of quarantine messages based on the parameters that you have specified.",
+      "annotation": "search_quarantine_messages",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Start Datetime",
+          "name": "startDate",
+          "type": "datetime",
+          "description": "Specify the start datetime of the duration from when the data should be fetched.",
+          "tooltip": "Specify the start datetime of the duration from when the data should be fetched.",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "End Datetime",
+          "name": "endDate",
+          "type": "datetime",
+          "description": "Specify the end datetime of the duration till when the data should be fetched.",
+          "tooltip": "Specify the end datetime of the duration till when the data should be fetched.",
+          "required": false,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Quarantine Type",
+          "description": "Specify the quarantine type to filter the records.",
+          "tooltip": "Specify the quarantine type to filter the records.",
+          "name": "quarantineType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "spam"
+        },
+        {
+          "title": "Order By",
+          "description": "Specify the order by to sort the records.",
+          "tooltip": "Specify the order by to sort the records.",
+          "name": "orderBy",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "From Address",
+            "To Address",
+            "Subject"
+          ]
+        },
+        {
+          "title": "Sort",
+          "description": "Specify the sorting order of the records.",
+          "tooltip": "Specify the sorting order of the records.",
+          "name": "orderDir",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Ascending",
+            "Descending"
+          ]
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the offset to fetch the records. Note: If you specify limit then you must specify this parameter.",
+          "tooltip": "Specify the offset to fetch the records. Note: If you specify limit then you must specify this parameter.",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the limit to fetch the records. Note: If you specify offset then you must specify this parameter.",
+          "tooltip": "Specify the limit to fetch the records. Note: If you specify offset then you must specify this parameter.",
+          "name": "limit",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Recipient Filter Operator",
+          "description": "Specify the recipient filter operator to filter the records.",
+          "tooltip": "Specify the recipient filter operator to filter the records.",
+          "name": "envelopeRecipientFilterOperator",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Contains",
+            "Is",
+            "Begins With",
+            "Ends With",
+            "Does Not Contain"
+          ]
+        },
+        {
+          "title": "Recipient Filter Value",
+          "description": "Specify the recipient filter value to filter the records.",
+          "tooltip": "Specify the recipient filter value to filter the records.",
+          "name": "envelopeRecipientFilterValue",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "user"
+        },
+        {
+          "title": "Filter Operator",
+          "description": "Specify the filter operator to filter the records.",
+          "tooltip": "Specify the filter operator to filter the records.",
+          "name": "filterOperator",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Contains",
+            "Is",
+            "Begins With",
+            "Ends With",
+            "Does Not Contain"
+          ]
+        },
+        {
+          "title": "Filter Value",
+          "description": "Specify the filter value to filter the records.",
+          "tooltip": "Specify the filter value to filter the records.",
+          "name": "filterValue",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "abc.com"
+        }
+      ],
+      "output_schema": {
+        "meta": {
+          "totalCount": ""
+        },
+        "data": [
+          {
+            "attributes": {
+              "envelopeRecipient": [],
+              "toAddress": [],
+              "subject": "",
+              "date": "",
+              "fromAddress": [],
+              "size": ""
+            },
+            "mid": ""
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_quarantine_message",
+      "title": "Get Quarantine Message By ID",
+      "description": "Retrieves the details of quarantine message based on the parameters that you have specified.",
+      "annotation": "get_quarantine_message",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Message ID",
+          "description": "Specify the message ID to fetch the details.",
+          "tooltip": "Specify the message ID to fetch the details.",
+          "name": "mid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Quarantine Type",
+          "description": "Specify the quarantine type to fetch the details.",
+          "tooltip": "Specify the quarantine type to fetch the details.",
+          "name": "quarantineType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "spam"
+        }
+      ],
+      "output_schema": {
+        "data": {
+          "attributes": {
+            "envelopeRecipient": [],
+            "toAddress": [],
+            "attachments": [],
+            "messageBody": "",
+            "date": "",
+            "fromAddress": [],
+            "subject": ""
+          },
+          "mid": ""
+        }
+      }
+    },
+    {
+      "operation": "release_quarantine_message",
+      "title": "Release Quarantine Messages",
+      "description": "Release the quarantine messages based on the parameters that you have specified.",
+      "annotation": "release_quarantine_message",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Message ID",
+          "description": "Specify comma separated message IDs to release the quarantine messages.",
+          "tooltip": "Specify comma separated message IDs to release the quarantine messages.",
+          "name": "mids",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Action",
+          "description": "Specify the action to release the quarantine messages.",
+          "tooltip": "Specify the action to release the quarantine messages.",
+          "name": "action",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "release"
+        },
+        {
+          "title": "Quarantine Type",
+          "description": "Specify the quarantine type to release the quarantine messages.",
+          "tooltip": "Specify the quarantine type to release the quarantine messages.",
+          "name": "quarantineType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "spam"
+        }
+      ],
+      "output_schema": {
+        "data": {
+          "action": "",
+          "totalCount": ""
+        }
+      }
+    },
+    {
+      "operation": "delete_quarantine_message",
+      "title": "Delete Quarantine Messages",
+      "description": "Delete the quarantine messages based on the parameters that you have specified.",
+      "annotation": "delete_quarantine_message",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Message ID",
+          "description": "Specify comma separated message IDs to delete the quarantine messages.",
+          "tooltip": "Specify comma separated message IDs to delete the quarantine messages.",
+          "name": "mids",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Quarantine Type",
+          "description": "Specify the quarantine type to delete the quarantine messages.",
+          "tooltip": "Specify the quarantine type to delete the quarantine messages.",
+          "name": "quarantineType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "spam"
+        }
+      ],
+      "output_schema": {
+        "data": {
+          "action": "",
+          "totalCount": ""
+        }
+      }
+    },
+    {
+      "operation": "search_safelist_or_blocklist_entries",
+      "title": "Search Safelist or Blocklist Entries",
+      "description": "Retrieves the detailed list of safelist or blocklist entries based on the parameters that you have specified.",
+      "annotation": "search_safelist_or_blocklist_entries",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Safelist or Blocklist",
+          "description": "Specify whether you want to retrieve safelist entries or blocklist entries.",
+          "tooltip": "Specify whether you want to retrieve safelist entries or blocklist entries.",
+          "name": "safelist_or_blocklist",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Safelist",
+            "Blocklist"
+          ]
+        },
+        {
+          "title": "Action",
+          "description": "Specify the action to fetch the records.",
+          "tooltip": "Specify the action to fetch the records.",
+          "name": "action",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "view"
+        },
+        {
+          "title": "Quarantine Type",
+          "description": "Specify the quarantine type to filter the records.",
+          "tooltip": "Specify the quarantine type to filter the records.",
+          "name": "quarantineType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "spam"
+        },
+        {
+          "title": "View By",
+          "description": "Specify the view by as sender or recipient to filter the records.",
+          "tooltip": "Specify the view by as sender or recipient to filter the records.",
+          "name": "viewBy",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Sender",
+            "Recipient"
+          ]
+        },
+        {
+          "title": "Order By",
+          "description": "Specify the order by as sender or recipient to filter the records.",
+          "tooltip": "Specify the order by as sender or recipient to filter the records.",
+          "name": "orderBy",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Sender",
+            "Recipient"
+          ]
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the offset to fetch the records. Note: If you specify limit then you must specify this parameter.",
+          "tooltip": "Specify the offset to fetch the records. Note: If you specify limit then you must specify this parameter.",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the limit to fetch the records. Note: If you specify offset then you must specify this parameter.",
+          "tooltip": "Specify the limit to fetch the records. Note: If you specify offset then you must specify this parameter.",
+          "name": "limit",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Sort",
+          "description": "Specify the sorting order of the records.",
+          "tooltip": "Specify the sorting order of the records.",
+          "name": "orderDir",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Ascending",
+            "Descending"
+          ]
+        },
+        {
+          "title": "Search",
+          "description": "Specify the value. This is only supported for the attribute orderBy=recipient.",
+          "tooltip": "Specify the value. This is only supported for the attribute orderBy=recipient.",
+          "name": "search",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        }
+      ],
+      "output_schema": {
+        "meta": {
+          "totalCount": ""
+        },
+        "data": [
+          {
+            "senderList": [],
+            "recipientAddress": ""
+          }
+        ]
+      }
+    },
+    {
+      "operation": "edit_safelist_or_blocklist_entries",
+      "title": "Edit Safelist or Blocklist Entries",
+      "description": "Add, edit or append safelist/blocklist entries based on the parameters that you have specified.",
+      "annotation": "edit_safelist_or_blocklist_entries",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Safelist or Blocklist",
+          "description": "Specify whether you want to edit safelist entries or blocklist entries.",
+          "tooltip": "Specify whether you want to edit safelist entries or blocklist entries.",
+          "name": "safelist_or_blocklist",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Safelist",
+            "Blocklist"
+          ]
+        },
+        {
+          "title": "Action",
+          "description": "Specify the action to edit the entries.",
+          "tooltip": "Specify the action to edit the entries.",
+          "name": "action",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Add",
+            "Edit",
+            "Append"
+          ]
+        },
+        {
+          "title": "Quarantine Type",
+          "description": "Specify the quarantine type to edit the records.",
+          "tooltip": "Specify the quarantine type to edit the records.",
+          "name": "quarantineType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "spam"
+        },
+        {
+          "title": "View By",
+          "description": "Specify the view by as sender or recipient to edit the entries.",
+          "tooltip": "Specify the view by as sender or recipient to edit the entries.",
+          "name": "viewBy",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Sender",
+            "Recipient"
+          ]
+        },
+        {
+          "title": "Recipient Addresses",
+          "description": "Specify the comma separated recipient addresses to edit the entries.",
+          "tooltip": "Specify the comma separated recipient addresses to edit the entries.",
+          "name": "recipientAddresses",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Recipient List",
+          "description": "Specify the comma separated recipient values to edit the entries.",
+          "tooltip": "Specify the comma separated recipient values to edit the entries.",
+          "name": "recipientList",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Sender Addresses",
+          "description": "Specify the comma separated sender addresses to edit the entries.",
+          "tooltip": "Specify the comma separated sender addresses to edit the entries.",
+          "name": "senderAddresses",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Sender List",
+          "description": "Specify the comma separated sender values to edit the entries.",
+          "tooltip": "Specify the comma separated sender values to edit the entries.",
+          "name": "senderList",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        }
+      ],
+      "output_schema": {
+        "action": "",
+        "quarantineType": "",
+        "recipientAddresses": [],
+        "senderList": [],
+        "viewBy": ""
+      }
+    },
+    {
+      "operation": "delete_safelist_or_blocklist_entries",
+      "title": "Delete Safelist or Blocklist Entries",
+      "description": "Delete safelist/blocklist entries based on the parameters that you have specified.",
+      "annotation": "delete_safelist_or_blocklist_entries",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Safelist or Blocklist",
+          "description": "Specify whether you want to delete safelist entries or blocklist entries.",
+          "tooltip": "Specify whether you want to delete safelist entries or blocklist entries.",
+          "name": "safelist_or_blocklist",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Safelist",
+            "Blocklist"
+          ]
+        },
+        {
+          "title": "Quarantine Type",
+          "description": "Specify the quarantine type to delete the entries.",
+          "tooltip": "Specify the quarantine type to delete the entries.",
+          "name": "quarantineType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "spam"
+        },
+        {
+          "title": "Recipient List",
+          "description": "Specify the comma separated recipient values to delete the entries.",
+          "tooltip": "Specify the comma separated recipient values to delete the entries.",
+          "name": "recipientList",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Sender List",
+          "description": "Specify the comma separated sender values to delete the entries.",
+          "tooltip": "Specify the comma separated sender values to delete the entries.",
+          "name": "senderList",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "View By",
+          "description": "Specify the view by as sender or recipient to delete the entries.",
+          "tooltip": "Specify the view by as sender or recipient to delete the entries.",
+          "name": "viewBy",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Sender",
+            "Recipient"
+          ]
+        }
+      ],
+      "output_schema": {
+        "quarantineType": "",
+        "recipientList": "",
+        "viewBy": ""
+      }
+    },
+    {
+      "operation": "get_message_dlp_details",
+      "title": "Get Message DLP Details",
+      "description": "Retrieves the details of DLP of messages based on the parameters that you have specified.",
+      "annotation": "get_message_dlp_details",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Start Datetime",
+          "name": "startDate",
+          "type": "datetime",
+          "description": "Specify the start datetime of the duration from when the data should be fetched.",
+          "tooltip": "Specify the start datetime of the duration from when the data should be fetched.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "End Datetime",
+          "name": "endDate",
+          "type": "datetime",
+          "description": "Specify the end datetime of the duration till when the data should be fetched.",
+          "tooltip": "Specify the end datetime of the duration till when the data should be fetched.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Serial Number",
+          "description": "Specify the serial number of the email gateway.",
+          "tooltip": "Specify the serial number of the email gateway.",
+          "name": "serialNumber",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Message ID",
+          "description": "Specify the mid of the message. Note: You must specify Injection Connection ID if you specify this parameter.",
+          "tooltip": "Specify the mid of the message. Note: You must specify Injection Connection ID if you specify this parameter.",
+          "name": "mid",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Injection Connection ID",
+          "description": "Specify the icid of the message. Note: You must specify Message ID if you specify this parameter.",
+          "tooltip": "Specify the icid of the message. Note: You must specify Message ID if you specify this parameter.",
+          "name": "icid",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        }
+      ],
+      "output_schema": {
+        "data": {
+          "messages": {
+            "direction": "",
+            "smtpAuthId": "",
+            "sender": "",
+            "midHeader": "",
+            "timestamp": "",
+            "hostName": "",
+            "mid": [
+              ""
+            ],
+            "sendingHostSummary": {},
+            "attachments": [],
+            "messageSize": "",
+            "dlpDetails": {
+              "violationSeverity": "",
+              "dlpMatchedContent": [
+                {
+                  "messagePartMatch": [
+                    {
+                      "classifier": "",
+                      "classifierMatch": []
+                    }
+                  ],
+                  "messagePart": ""
+                }
+              ],
+              "mid": "",
+              "riskFactor": "",
+              "dlpPolicy": ""
+            },
+            "showDLPDetails": "",
+            "senderGroup": "",
+            "recipient": [],
+            "subject": ""
+          }
+        }
+      }
+    },
+    {
+      "operation": "get_message_amp_details",
+      "title": "Get Message AMP Details",
+      "description": "Retrieves the advanced malware protection details of messages based on the parameters that you have specified.",
+      "annotation": "get_message_amp_details",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Start Datetime",
+          "name": "startDate",
+          "type": "datetime",
+          "description": "Specify the start datetime of the duration from when the data should be fetched.",
+          "tooltip": "Specify the start datetime of the duration from when the data should be fetched.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "End Datetime",
+          "name": "endDate",
+          "type": "datetime",
+          "description": "Specify the end datetime of the duration till when the data should be fetched.",
+          "tooltip": "Specify the end datetime of the duration till when the data should be fetched.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Serial Number",
+          "description": "Specify the serial number of the email gateway.",
+          "tooltip": "Specify the serial number of the email gateway.",
+          "name": "serialNumber",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Message ID",
+          "description": "Specify the mid of the message. Note: You must specify Injection Connection ID if you specify this parameter.",
+          "tooltip": "Specify the mid of the message. Note: You must specify Injection Connection ID if you specify this parameter.",
+          "name": "mid",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Injection Connection ID",
+          "description": "Specify the icid of the message. Note: You must specify Message ID if you specify this parameter.",
+          "tooltip": "Specify the icid of the message. Note: You must specify Message ID if you specify this parameter.",
+          "name": "icid",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        }
+      ],
+      "output_schema": {
+        "data": {
+          "messages": {
+            "showAMPDetails": "",
+            "direction": "",
+            "smtpAuthId": "",
+            "sender": "",
+            "midHeader": "",
+            "timestamp": "",
+            "hostName": "",
+            "mid": [
+              ""
+            ],
+            "sendingHostSummary": {},
+            "attachments": [],
+            "messageSize": "",
+            "ampDetails": [
+              {
+                "timestamp": "",
+                "description": ""
+              }
+            ],
+            "senderGroup": "",
+            "recipient": [],
+            "subject": ""
+          }
+        }
+      }
+    },
+    {
+      "operation": "get_message_url_details",
+      "title": "Get Message URL Details",
+      "description": "Retrieves the URL details of messages based on the parameters that you have specified.",
+      "annotation": "get_message_url_details",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Start Datetime",
+          "name": "startDate",
+          "type": "datetime",
+          "description": "Specify the start datetime of the duration from when the data should be fetched.",
+          "tooltip": "Specify the start datetime of the duration from when the data should be fetched.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "End Datetime",
+          "name": "endDate",
+          "type": "datetime",
+          "description": "Specify the end datetime of the duration till when the data should be fetched.",
+          "tooltip": "Specify the end datetime of the duration till when the data should be fetched.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Serial Number",
+          "description": "Specify the serial number of the email gateway.",
+          "tooltip": "Specify the serial number of the email gateway.",
+          "name": "serialNumber",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Message ID",
+          "description": "Specify the mid of the message. Note: You must specify Injection Connection ID if you specify this parameter.",
+          "tooltip": "Specify the mid of the message. Note: You must specify Injection Connection ID if you specify this parameter.",
+          "name": "mid",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Injection Connection ID",
+          "description": "Specify the icid of the message. Note: You must specify Message ID if you specify this parameter.",
+          "tooltip": "Specify the icid of the message. Note: You must specify Message ID if you specify this parameter.",
+          "name": "icid",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        }
+      ],
+      "output_schema": {
+        "data": {
+          "messages": {
+            "direction": "",
+            "smtpAuthId": "",
+            "sdrAge": "",
+            "sender": "",
+            "midHeader": "",
+            "urlDetails": [
+              {
+                "timestamp": "",
+                "description": ""
+              }
+            ],
+            "sdrCategory": "",
+            "hostName": "",
+            "mid": [
+              ""
+            ],
+            "sendingHostSummary": {},
+            "attachments": [],
+            "sdrReputation": "",
+            "showURLDetails": "",
+            "senderGroup": "",
+            "recipient": [],
+            "subject": ""
+          }
+        }
+      }
+    },
+    {
+      "operation": "get_report",
+      "title": "Get Report",
+      "description": "Retrieves report details based on the parameters that you have specified.",
+      "annotation": "get_report",
+      "category": "investigation",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Report Type",
+          "description": "Specify the report type to fetch the report details.",
+          "tooltip": "Specify the report type to fetch the report details.",
+          "name": "reportType",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Mail Incoming Traffic Summary",
+            "Reporting System",
+            "Mail VOF threat Summary",
+            "Mail VOF Specific Threat Summary",
+            "Mail AMP Threat Summary"
+          ]
+        },
+        {
+          "title": "Start Datetime",
+          "name": "startDate",
+          "type": "datetime",
+          "description": "Specify the start datetime of the duration from when the data should be fetched.",
+          "tooltip": "Specify the start datetime of the duration from when the data should be fetched.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "End Datetime",
+          "name": "endDate",
+          "type": "datetime",
+          "description": "Specify the end datetime of the duration till when the data should be fetched.",
+          "tooltip": "Specify the end datetime of the duration till when the data should be fetched.",
+          "required": true,
+          "editable": true,
+          "visible": true
+        },
+        {
+          "title": "Device Type",
+          "description": "Specify the device type to fetch the report details.",
+          "tooltip": "Specify the device type to fetch the report details.",
+          "name": "device_type",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Query Type",
+          "description": "Specify the query type to fetch the report details.",
+          "tooltip": "Specify the query type to fetch the report details.",
+          "name": "query_type",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "graph"
+        },
+        {
+          "title": "Order By",
+          "description": "Specify the order by to sort the records. Note: If you specify this parameter then you must specify Sort.",
+          "tooltip": "Specify the order by to sort the records. Note: If you specify this parameter then you must specify Sort.",
+          "name": "orderBy",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text",
+          "placeholder": "total_clean_recipients"
+        },
+        {
+          "title": "Sort",
+          "description": "Specify the sorting order of the records. Note: If you specify this parameter then you must specify Order By.",
+          "tooltip": "Specify the sorting order of the records. Note: If you specify this parameter then you must specify Order By.",
+          "name": "orderDir",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Ascending",
+            "Descending"
+          ]
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the offset to fetch the records. Note: If you specify limit then you must specify this parameter.",
+          "tooltip": "Specify the offset to fetch the records. Note: If you specify limit then you must specify this parameter.",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the limit to fetch the records. Note: If you specify offset then you must specify this parameter.",
+          "tooltip": "Specify the limit to fetch the records. Note: If you specify offset then you must specify this parameter.",
+          "name": "limit",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "integer"
+        },
+        {
+          "title": "Data Retrieval",
+          "description": "Specify the number of records with the highest values to return.",
+          "tooltip": "Specify the number of records with the highest values to return.",
+          "name": "top",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Filter Value",
+          "description": "Specify the filter value to fetch the report details.",
+          "tooltip": "Specify the filter value to fetch the report details.",
+          "name": "filterValue",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Filter By",
+          "description": "Filter the data to be retrieved according to the filter property and value.",
+          "tooltip": "Filter the data to be retrieved according to the filter property and value.",
+          "name": "filterBy",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Filter Operator",
+          "description": "Specify the filter operator to fetch the report details.",
+          "tooltip": "Specify the filter operator to fetch the report details.",
+          "name": "filterOperator",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Is",
+            "Begins With"
+          ]
+        },
+        {
+          "title": "Device Group Name",
+          "description": "Specify the device group name to fetch the report details.",
+          "tooltip": "Specify the device group name to fetch the report details.",
+          "name": "device_group_name",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        },
+        {
+          "title": "Device Name",
+          "description": "Specify the device name to fetch the report details.",
+          "tooltip": "Specify the device name to fetch the report details.",
+          "name": "device_name",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "type": "text"
+        }
+      ],
+      "output_schema": {
+        "meta": {
+          "totalCount": ""
+        },
+        "data": {
+          "type": "",
+          "resultSet": ""
+        }
+      }
+    }
+  ]
+}
