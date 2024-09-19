@@ -1,0 +1,847 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+      "@type": "WorkflowCollection",
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "200601c2-099d-479e-8e15-f5f6746cafff",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "549eea93-1b5f-4d21-a7fc-61ec0993e616",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "fa39e8a8-c866-4a9f-b299-b3d3a7f3a68a",
+              "@type": "WorkflowStep",
+              "name": "Search Quarantine Messages",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "startDate": "",
+                  "endDate": "",
+                  "quarantineType": "",
+                  "orderBy": "",
+                  "orderDir": "",
+                  "offset": "",
+                  "limit": "",
+                  "envelopeRecipientFilterOperator": "",
+                  "envelopeRecipientFilterValue": "",
+                  "filterOperator": "",
+                  "filterValue": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "search_quarantine_messages",
+                "operationTitle": "Search Quarantine Messages"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the detailed list of quarantine messages based on the parameters that you have specified.",
+          "name": "Search Quarantine Messages",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/549eea93-1b5f-4d21-a7fc-61ec0993e616",
+          "routes": [
+            {
+              "uuid": "580ee8d8-0566-4920-a25c-824b28c493da",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Search Quarantine Messages",
+              "sourceStep": "/api/3/workflow_steps/549eea93-1b5f-4d21-a7fc-61ec0993e616",
+              "targetStep": "/api/3/workflow_steps/fa39e8a8-c866-4a9f-b299-b3d3a7f3a68a"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "71afdbe6-cb18-4d27-bdba-d46c80695771",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "f4bc131b-3bf4-46bc-9022-e5a3a249e446",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "f745df8e-885e-40f9-b8ee-9543b545e53b",
+              "@type": "WorkflowStep",
+              "name": "Get Quarantine Message By ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "mid": "",
+                  "quarantineType": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "get_quarantine_message",
+                "operationTitle": "Get Quarantine Message By ID"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the details of quarantine message based on the parameters that you have specified.",
+          "name": "Get Quarantine Message By ID",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/f4bc131b-3bf4-46bc-9022-e5a3a249e446",
+          "routes": [
+            {
+              "uuid": "6ea0a695-36c1-4a60-a23b-2def9860f815",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Quarantine Message By ID",
+              "sourceStep": "/api/3/workflow_steps/f4bc131b-3bf4-46bc-9022-e5a3a249e446",
+              "targetStep": "/api/3/workflow_steps/f745df8e-885e-40f9-b8ee-9543b545e53b"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "781c8c05-c23d-41d8-bc8c-3774830597c0",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "8b54dcad-b4fe-486a-8dca-f2c3722e0a1d",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "ae5fe76f-a5e6-466d-a0bf-b478bcef475c",
+              "@type": "WorkflowStep",
+              "name": "Release Quarantine Messages",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "mids": "",
+                  "action": "",
+                  "quarantineType": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "release_quarantine_message",
+                "operationTitle": "Release Quarantine Messages"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Release the quarantine messages based on the parameters that you have specified.",
+          "name": "Release Quarantine Messages",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/8b54dcad-b4fe-486a-8dca-f2c3722e0a1d",
+          "routes": [
+            {
+              "uuid": "a917d0a0-48c5-4ec8-a3a7-8fff91704091",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Release Quarantine Messages",
+              "sourceStep": "/api/3/workflow_steps/8b54dcad-b4fe-486a-8dca-f2c3722e0a1d",
+              "targetStep": "/api/3/workflow_steps/ae5fe76f-a5e6-466d-a0bf-b478bcef475c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "de0b9d5f-f462-44cd-ab4d-3a2943f39f3c",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "9396bc50-afb3-44f7-9313-44abfeb2f670",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "6b58a374-cc29-4116-920f-22ced7872788",
+              "@type": "WorkflowStep",
+              "name": "Delete Quarantine Messages",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "mids": "",
+                  "quarantineType": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "delete_quarantine_message",
+                "operationTitle": "Delete Quarantine Messages"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Delete the quarantine messages based on the parameters that you have specified.",
+          "name": "Delete Quarantine Messages",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/9396bc50-afb3-44f7-9313-44abfeb2f670",
+          "routes": [
+            {
+              "uuid": "3cea36de-2258-476c-b88f-dadec88c73f2",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Quarantine Messages",
+              "sourceStep": "/api/3/workflow_steps/9396bc50-afb3-44f7-9313-44abfeb2f670",
+              "targetStep": "/api/3/workflow_steps/6b58a374-cc29-4116-920f-22ced7872788"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "20f7f776-00cc-4b22-9530-6a52204258d2",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "9ea3803a-18bf-4e40-9d93-f022c2ab089f",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "76012ca3-4ae7-42b1-b114-2591ad446615",
+              "@type": "WorkflowStep",
+              "name": "Search Safelist or Blocklist Entries",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "safelist_or_blocklist": "",
+                  "action": "",
+                  "quarantineType": "",
+                  "viewBy": "",
+                  "orderBy": "",
+                  "offset": "",
+                  "limit": "",
+                  "orderDir": "",
+                  "search": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "search_safelist_or_blocklist_entries",
+                "operationTitle": "Search Safelist or Blocklist Entries"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the detailed list of safelist or blocklist entries based on the parameters that you have specified.",
+          "name": "Search Safelist or Blocklist Entries",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/9ea3803a-18bf-4e40-9d93-f022c2ab089f",
+          "routes": [
+            {
+              "uuid": "c08fb6fb-53e4-46d7-bc1e-83bee271bd5e",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Search Safelist or Blocklist Entries",
+              "sourceStep": "/api/3/workflow_steps/9ea3803a-18bf-4e40-9d93-f022c2ab089f",
+              "targetStep": "/api/3/workflow_steps/76012ca3-4ae7-42b1-b114-2591ad446615"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "803e4d6f-32e8-41d9-8b8d-65034f787495",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "5d5940f1-cf77-4844-b227-da39be2a98e4",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "1dd3f759-f7cf-43b0-a3d1-0dfb817b3b5e",
+              "@type": "WorkflowStep",
+              "name": "Edit Safelist or Blocklist Entries",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "safelist_or_blocklist": "",
+                  "action": "",
+                  "quarantineType": "",
+                  "viewBy": "",
+                  "recipientAddresses": "",
+                  "recipientList": "",
+                  "senderAddresses": "",
+                  "senderList": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "edit_safelist_or_blocklist_entries",
+                "operationTitle": "Edit Safelist or Blocklist Entries"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Add, edit or append safelist/blocklist entries based on the parameters that you have specified.",
+          "name": "Edit Safelist or Blocklist Entries",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/5d5940f1-cf77-4844-b227-da39be2a98e4",
+          "routes": [
+            {
+              "uuid": "df957267-b5fe-4fee-855d-e7269374a8b2",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Edit Safelist or Blocklist Entries",
+              "sourceStep": "/api/3/workflow_steps/5d5940f1-cf77-4844-b227-da39be2a98e4",
+              "targetStep": "/api/3/workflow_steps/1dd3f759-f7cf-43b0-a3d1-0dfb817b3b5e"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "d11b53bf-3eab-4f58-bbf1-3e6528f1419e",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "1a76be86-2268-4482-9e36-0d41357c0e86",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "3208ee76-ac50-4c1b-ab12-081edf0e87db",
+              "@type": "WorkflowStep",
+              "name": "Delete Safelist or Blocklist Entries",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "safelist_or_blocklist": "",
+                  "quarantineType": "",
+                  "recipientList": "",
+                  "senderList": "",
+                  "viewBy": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "delete_safelist_or_blocklist_entries",
+                "operationTitle": "Delete Safelist or Blocklist Entries"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Delete safelist/blocklist entries based on the parameters that you have specified.",
+          "name": "Delete Safelist or Blocklist Entries",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/1a76be86-2268-4482-9e36-0d41357c0e86",
+          "routes": [
+            {
+              "uuid": "e10c184c-6c92-41db-a7c5-98ddc4a8a931",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Safelist or Blocklist Entries",
+              "sourceStep": "/api/3/workflow_steps/1a76be86-2268-4482-9e36-0d41357c0e86",
+              "targetStep": "/api/3/workflow_steps/3208ee76-ac50-4c1b-ab12-081edf0e87db"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "cdd52282-0b54-455b-8329-70b6833c3077",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "54efc262-bd29-41d1-8d86-68f1705dadec",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "d6d5113a-f112-4b06-891f-934c3e42c0e1",
+              "@type": "WorkflowStep",
+              "name": "Get Message DLP Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "startDate": "",
+                  "endDate": "",
+                  "serialNumber": "",
+                  "mid": "",
+                  "icid": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "get_message_dlp_details",
+                "operationTitle": "Get Message DLP Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the details of DLP of messages based on the parameters that you have specified.",
+          "name": "Get Message DLP Details",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/54efc262-bd29-41d1-8d86-68f1705dadec",
+          "routes": [
+            {
+              "uuid": "515927e9-4552-419b-824f-434c7639a42f",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Message DLP Details",
+              "sourceStep": "/api/3/workflow_steps/54efc262-bd29-41d1-8d86-68f1705dadec",
+              "targetStep": "/api/3/workflow_steps/d6d5113a-f112-4b06-891f-934c3e42c0e1"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "d93b79f2-5e4b-49b5-848b-1435a2acc27b",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "91d5bc97-1e6a-48fa-a79f-164e0b9ceef3",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "36571973-f29c-4ae8-8d94-af5358b1024a",
+              "@type": "WorkflowStep",
+              "name": "Get Message AMP Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "startDate": "",
+                  "endDate": "",
+                  "serialNumber": "",
+                  "mid": "",
+                  "icid": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "get_message_amp_details",
+                "operationTitle": "Get Message AMP Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the advanced malware protection details of messages based on the parameters that you have specified.",
+          "name": "Get Message AMP Details",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/91d5bc97-1e6a-48fa-a79f-164e0b9ceef3",
+          "routes": [
+            {
+              "uuid": "cf57ea2e-624c-486a-a940-b418ac0f1f5c",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Message AMP Details",
+              "sourceStep": "/api/3/workflow_steps/91d5bc97-1e6a-48fa-a79f-164e0b9ceef3",
+              "targetStep": "/api/3/workflow_steps/36571973-f29c-4ae8-8d94-af5358b1024a"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "0d4e4902-7ed3-4faf-a82a-9e49987424aa",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "504819f5-c81f-40ae-8aa7-5dabe07d4805",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "ab41e147-da4a-4b33-b4c1-7c4f35c0fbf2",
+              "@type": "WorkflowStep",
+              "name": "Get Message URL Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "startDate": "",
+                  "endDate": "",
+                  "serialNumber": "",
+                  "mid": "",
+                  "icid": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "get_message_url_details",
+                "operationTitle": "Get Message URL Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the URL details of messages based on the parameters that you have specified.",
+          "name": "Get Message URL Details",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/504819f5-c81f-40ae-8aa7-5dabe07d4805",
+          "routes": [
+            {
+              "uuid": "bf37d3fe-a3a0-42f7-9a52-93debb28b976",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Message URL Details",
+              "sourceStep": "/api/3/workflow_steps/504819f5-c81f-40ae-8aa7-5dabe07d4805",
+              "targetStep": "/api/3/workflow_steps/ab41e147-da4a-4b33-b4c1-7c4f35c0fbf2"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a4424e92-c6f7-4def-93ee-03e78bb67650",
+          "collection": "/api/3/workflow_collections/eb9f0a38-38d2-4bfe-a162-4173c6cda24d",
+          "steps": [
+            {
+              "uuid": "843e9275-3942-470d-b8e7-381eb4e985de",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "params": []
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "49390cbb-eb23-4c7d-9488-875b6664b690",
+              "@type": "WorkflowStep",
+              "name": "Get Report",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Cisco ESA(REST)",
+                "config": "''",
+                "params": {
+                  "reportType": "",
+                  "startDate": "",
+                  "endDate": "",
+                  "device_type": "",
+                  "query_type": "",
+                  "orderBy": "",
+                  "orderDir": "",
+                  "offset": "",
+                  "limit": "",
+                  "top": "",
+                  "filterValue": "",
+                  "filterBy": "",
+                  "filterOperator": "",
+                  "device_group_name": "",
+                  "device_name": ""
+                },
+                "version": "1.0.0",
+                "connector": "cisco-esa-rest",
+                "operation": "get_report",
+                "operationTitle": "Get Report"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves report details based on the parameters that you have specified.",
+          "name": "Get Report",
+          "tag": "#Cisco ESA(REST)",
+          "recordTags": [
+            "Cisco",
+            "cisco-esa-rest"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/843e9275-3942-470d-b8e7-381eb4e985de",
+          "routes": [
+            {
+              "uuid": "4b252861-df52-4ac4-80d0-367baa21f496",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Report",
+              "sourceStep": "/api/3/workflow_steps/843e9275-3942-470d-b8e7-381eb4e985de",
+              "targetStep": "/api/3/workflow_steps/49390cbb-eb23-4c7d-9488-875b6664b690"
+            }
+          ]
+        }
+      ],
+      "name": "Sample - Cisco ESA(REST) - 1.0.0",
+      "description": "The Cisco Email Security Virtual Appliance significantly lowers the cost of deploying email security, especially in highly distributed networks. Spam and malware are part of a complex email security picture that includes inbound threats and outbound risks. The all-in-one Cisco ESA (Email Security Appliance) offers simple, fast deployment with few maintenance requirements, low latency, and low operating costs. ",
+      "visible": true,
+      "recordTags": [
+        "Cisco",
+        "cisco-esa-rest"
+      ]
+    }
+  ]
+}
